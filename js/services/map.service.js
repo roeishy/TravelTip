@@ -30,7 +30,7 @@ function addMarker(loc) {
     if (gMarker) {
         gMarker.setMap(null);
     }
-    const contentString = '<input type="text" placeholder="Enter the locations name" ><button>save</button>';
+    const contentString = '<input type="text" placeholder="Enter the locations name" ><button>save</button>';//TODO onclick addLoc name and gMarker
     const infowindow = new google.maps.InfoWindow({
         content: contentString,
     });
