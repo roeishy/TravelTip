@@ -6,10 +6,14 @@ import { storageService } from './services/storage-service.js'
 window.onload = onInit;
 window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
+window.onRemove = onRemove;
 window.onGetLocs = onGetLocs;
+window.onSave = onSave;
 window.onGetUserPos = onGetUserPos;
 window.onSave = mapService.onSave;
 window.onSearch = onSearch;
+// window.onSave = mapService.onSave;
+
 
 function onInit() {
     mapService.initMap()
@@ -17,9 +21,32 @@ function onInit() {
             console.log('Map is ready');
         })
         .catch(() => console.log('Error: cannot init map'));
+    renderLocationsTable()
 }
 
+function renderLocationsTable() {
+    locService.getLocs()
+        .then(res => {
+            console.log('locations', res);
+            var elTBody = res.map(tr =>
+                `
+            <tr>         
+             <td>${tr.name}</td>
+             <td>
+                 <button onclick="onPanTo(${tr.lat}, ${tr.lng})" class="btn btn-success">Go</button>
+                 <button onclick="onRemove('${tr.id}')" class="btn btn-danger">delete</button>
+             </td>                                      
+            </tr>
+            `).join('')
+            document.getElementById('my-positions').innerHTML = elTBody
+        })
+}
 
+function onRemove(idx) {
+    console.log('idx', idx);
+    locService.onDelete(idx)
+    renderLocationsTable()
+}
 
 function onAddMarker() {
     console.log('Adding a marker');
@@ -46,9 +73,9 @@ function onGetUserPos() {
             console.log('err!!!', err);
         })
 }
-function onPanTo() {
+function onPanTo(lat, lng) {
     console.log('Panning the Map');
-    mapService.panTo(35.6895, 139.6917);
+    mapService.panTo(lat, lng);
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -66,4 +93,9 @@ function onSearch() {
             locService.addLoc(address, res)
             mapService.panTo(res.lat, res.lng)
         })
-}
+    function onSave() {
+        var marker = mapService.getMarker()
+        var locationPos = document.getElementById('posLocation').value;
+        locService.addLoc(locationPos, marker.position);
+        renderLocationsTable()
+    }

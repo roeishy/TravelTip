@@ -6,7 +6,9 @@ export const mapService = {
     addMarker,
     panTo,
     onSave,
-    addressToPos
+    addressToPos,
+    getMarker
+    //onSave
 }
 
 
@@ -63,9 +65,14 @@ function addMarker(loc) {
     return marker;
 }
 
-function onSave() {
-    var locationPos = document.getElementById('posLocation').value;
-    locService.addLoc(locationPos, gMarker.position);
+// function onSave() {
+//     var locationPos = document.getElementById('posLocation').value;
+//     locService.addLoc(locationPos, gMarker.position);
+//     location.reload()
+// }
+
+function getMarker() {
+    return gMarker
 }
 
 function panTo(lat, lng) {
