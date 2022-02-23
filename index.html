@@ -21,10 +21,10 @@
                 </div>
                 <!-- header buttons -->
                 <div class="col-md-12 col-lg-3 mt-md-2 d-flex align-items-center">
-                    <input type="text" placeholder="Enter Location" class="form-control"">
+                    <input id="search-input" type="text" placeholder="Enter Location" class="form-control"">
             </div>
             <div class=" col-md-12 col-lg-1 mt-md-2 d-flex align-items-center">
-                    <button class="btn btn-secondary col-12" onclick="onGetLocs()">Go</button>
+                    <button class="btn btn-secondary col-12" onclick="onSearch()">Go</button>
                 </div>
                 <div class="col-md-12 col-lg-2 mt-md-2 d-flex align-items-center justify-content-end">
                     <button class="btn btn-secondary col-12" onclick="onGetUserPos()">My Location</button>
@@ -69,6 +69,7 @@
 
 
         <!-- boot strap files -->
+        <script src="lib/axios.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>

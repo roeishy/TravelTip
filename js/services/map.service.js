@@ -5,7 +5,8 @@ export const mapService = {
     initMap,
     addMarker,
     panTo,
-    onSave
+    onSave,
+    addressToPos
 }
 
 
@@ -70,6 +71,22 @@ function onSave() {
 function panTo(lat, lng) {
     var laLatLng = new google.maps.LatLng(lat, lng);
     gMap.panTo(laLatLng);
+}
+
+function addressToPos(address) {
+    const API_KEY = 'AIzaSyCKzNT2YpgIvKoDvFxzu0Mjob7W04jiQV0';
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}`)
+        .then(res => {
+            var latLng = {
+                lat: res.data.results[0].geometry.location.lat,
+                lng: res.data.results[0].geometry.location.lng
+            }
+            return latLng;
+        })
+        .catch(err => {
+            console.log('Had Issues', err)
+            throw err
+        })
 }
 
 function _connectGoogleApi() {

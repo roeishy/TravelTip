@@ -9,7 +9,7 @@ window.onPanTo = onPanTo;
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
 window.onSave = mapService.onSave;
-
+window.onSearch = onSearch;
 
 function onInit() {
     mapService.initMap()
@@ -57,4 +57,13 @@ function getPosition() {
     return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject)
     })
+}
+
+function onSearch() {
+    var address = document.getElementById('search-input').value;
+    mapService.addressToPos(address)
+        .then(res => {
+            locService.addLoc(address, res)
+            mapService.panTo(res.lat, res.lng)
+        })
 }

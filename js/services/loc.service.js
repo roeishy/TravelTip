@@ -22,7 +22,10 @@ function getLocs() {
 
 
 function addLoc(name, location) {
-    var pos = JSON.parse(JSON.stringify(location.toJSON(), null, 2));
+
+    var pos = typeof (location.lat) === 'number' ? location : JSON.parse(JSON.stringify(location.toJSON(), null, 2));
+
+    console.log('pos:', pos);
     var loc = {
         id: utilService.makeId(),
         name: name,
