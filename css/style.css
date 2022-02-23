@@ -8,3 +8,7 @@
     border: 1px solid black;
     height: 90vh;
 }
+
+.selector-for-some-widget {
+    box-sizing: content-box;
+  }
