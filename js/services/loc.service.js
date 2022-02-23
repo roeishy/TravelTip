@@ -3,7 +3,8 @@ import { storageService } from "./storage-service.js";
 
 export const locService = {
     getLocs,
-    addLoc
+    addLoc,
+    onDelete
 }
 
 const STORAGE_KEY = 'savesLocs'
@@ -18,6 +19,11 @@ function getLocs() {
             resolve(locs);
         }, 2000)
     });
+}
+
+function onDelete(idx){
+    var posTrash = locs.findIndex(Element=>Element.id === idx)
+    locs.splice(posTrash,1)
 }
 
 
