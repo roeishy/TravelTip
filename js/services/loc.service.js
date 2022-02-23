@@ -21,9 +21,10 @@ function getLocs() {
     });
 }
 
-function onDelete(idx){
-    var posTrash = locs.findIndex(Element=>Element.id === idx)
-    locs.splice(posTrash,1)
+function onDelete(idx) {
+    var posTrash = locs.findIndex(Element => Element.id === idx)
+    locs.splice(posTrash, 1);
+    storageService.saveToStorage(STORAGE_KEY, locs);
 }
 
 

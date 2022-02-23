@@ -10,7 +10,6 @@ window.onRemove = onRemove;
 window.onGetLocs = onGetLocs;
 window.onSave = onSave;
 window.onGetUserPos = onGetUserPos;
-window.onSave = mapService.onSave;
 window.onSearch = onSearch;
 // window.onSave = mapService.onSave;
 
