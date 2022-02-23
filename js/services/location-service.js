@@ -15,9 +15,9 @@ function createLocation(pos, name) {
     saveToStorage(STORAGE_KEY, gSavedLocations)
 }
 
-function _saveLocsToStorage() {
-    saveToStorage(STORAGE_KEY, gSavedPos)
-}
+// function _saveLocsToStorage() {
+//     saveToStorage(STORAGE_KEY, gSavedPos)
+// }
 
 function getSavedPos() {
     gSavedLocations = loadFromStorage(STORAGE_KEY);

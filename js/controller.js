@@ -42,26 +42,29 @@ function showLocation(position) {
     initMap(position.coords.latitude, position.coords.longitude);
 }
 
+//TODO add modal to HTML
 function onClickMap(ev) {
     document.querySelector('#clicked-pos').innerText = `${JSON.stringify(ev.latLng)}`
-    document.querySelector('.modal-container').style.display = "block";
+    document.getElementById('modal-container').style.display = "block";
 }
 
 function closeModal(event) {
-    var elModal = document.querySelector('.modal-container')
+    var elModal = document.getElementById('modal-container')
     var elSaveBtn = document.querySelector('#save')
     if (event.target === elModal || event.target === elSaveBtn) {
         elModal.style.display = "none";
     }
 }
 
+//TODO add save button to the modal
 function onSave() {
     var pos = JSON.parse(document.querySelector('#clicked-pos').innerText);
     let name = document.querySelector('#pos-name').value
-    addPos(pos, name);
+    createLocation(pos, name);
     renderSavedLocations()
 }
 
+//TODO render to 222
 function renderSavedLocations() {
     const pos = getSavedPos();
     let strHTMLs = pos.map(pos =>
