@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,74 +9,78 @@
     <link rel="stylesheet" href="css/style.css">
     <title>TravelTip</title>
 </head>
+
 <body>
 
     <div class="row ">
         <div class="col-8 border border-dark m-auto mt-5">
             <!-- Header -->
-        <div class="row">
-            <div class="col-md-12 col-lg-6 mt-md-2"><h1>TravelTip</h1></div>
-            <!-- header buttons -->
-            <div class="col-md-12 col-lg-3 mt-md-2 d-flex align-items-center">
-                <input type="text" placeholder="Enter Location" class="form-control"">
-            </div>
-            <div class="col-md-12 col-lg-1 mt-md-2 d-flex align-items-center">
-                <button class="btn btn-secondary col-12" onclick="onGetLocs()">Go</button>
-            </div> 
-            <div class="col-md-12 col-lg-2 mt-md-2 d-flex align-items-center justify-content-end">
-                <button class="btn btn-secondary col-12" onclick="onGetUserPos()">My Location</button>
-            </div>             
-        </div>
-
-        <!-- next section -->
-        <div class="row d-flex align-items-center mt-5">
-            <div class="col-md-7 col-lg-9 mt-md-2">
-                <h4 class="lead">Locations: <span class="locs"></span></h4>
-                <p>You are at: <span class="user-pos"></span></p>
-            </div>
-            <div class="col-md-5 col-lg-3 mt-md-2 d-flex justify-content-end">
-                <button class="btn btn-secondary col-12">Copy Location</button>
-            </div>
-        </div>
-
-        <!-- app content -->
-        <div class="row d-flex align-items-center mt-5">
-            <div class="col-md-12 col-lg-6">
-                <div class="row">
-                    <div class="col-12 border border-dark" style="height: 30vh;">111</div>
+            <div class="row">
+                <div class="col-md-12 col-lg-6 mt-md-2">
+                    <h1>TravelTip</h1>
                 </div>
-                <div class="row mt-2 mt-md-3">
-                    <div class="col-12 border border-dark" style="height: 20vh">222</div>
+                <!-- header buttons -->
+                <div class="col-md-12 col-lg-3 mt-md-2 d-flex align-items-center">
+                    <input type="text" placeholder="Enter Location" class="form-control"">
+            </div>
+            <div class=" col-md-12 col-lg-1 mt-md-2 d-flex align-items-center">
+                    <button class="btn btn-secondary col-12" onclick="onGetLocs()">Go</button>
+                </div>
+                <div class="col-md-12 col-lg-2 mt-md-2 d-flex align-items-center justify-content-end">
+                    <button class="btn btn-secondary col-12" onclick="onGetUserPos()">My Location</button>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-6 mt-md-3">
-                <div id="map" class="col-12 border border-dark" style="height: 51vh">333</div>
+
+            <!-- next section -->
+            <div class="row d-flex align-items-center mt-5">
+                <div class="col-md-7 col-lg-9 mt-md-2">
+                    <h4 class="lead">Locations: <span class="locs"></span></h4>
+                    <p>You are at: <span class="user-pos"></span></p>
+                </div>
+                <div class="col-md-5 col-lg-3 mt-md-2 d-flex justify-content-end">
+                    <button class="btn btn-secondary col-12">Copy Location</button>
+                </div>
+            </div>
+
+            <!-- app content -->
+            <div class="row d-flex align-items-center mt-5">
+                <div class="col-md-12 col-lg-6">
+                    <div class="row">
+                        <div class="col-12 border border-dark" style="height: 30vh;">111</div>
+                    </div>
+                    <div class="row mt-2 mt-md-3">
+                        <div class="col-12 border border-dark" style="height: 20vh">222</div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-6 mt-md-3">
+                    <div id="map" class="col-12 border border-dark" style="height: 51vh">333</div>
+                </div>
             </div>
         </div>
-    </div>
 
 
-    
-    
-    <!-- <button onclick="onAddMarker()" class="btn-add-marker">Add Marker Speific Location</button>    
+
+
+        <!-- <button onclick="onAddMarker()" class="btn-add-marker">Add Marker Speific Location</button>    
     <button onclick="onPanTo()"class="btn-pan">Pan Map to Tokyo</button> -->
 
-    
-    
 
 
-    <!-- boot strap files -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-        crossorigin="anonymous"></script>
 
 
-    <script type="module" src="js/app.controller.js"></script>
+        <!-- boot strap files -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+            integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+            integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+            crossorigin="anonymous"></script>
+
+
+        <script type="module" src="js/app.controller.js"></script>
 </body>
+
 </html>

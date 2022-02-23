@@ -1,5 +1,3 @@
-
-
 export const locService = {
     getLocs,
     addLoc

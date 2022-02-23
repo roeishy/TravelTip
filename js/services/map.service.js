@@ -30,10 +30,21 @@ function addMarker(loc) {
     if (gMarker) {
         gMarker.setMap(null);
     }
+    const contentString = '<input type="text" placeholder="Enter the locations name" ><button>save</button>';
+    const infowindow = new google.maps.InfoWindow({
+        content: contentString,
+    });
     var marker = new google.maps.Marker({
         position: loc,
         map: gMap,
         title: 'Hello World!'
+    });
+    marker.addListener("click", () => {
+        infowindow.open({
+            anchor: marker,
+            gMap,
+            shouldFocus: false,
+        });
     });
     gMarker = marker;
     return marker;
@@ -43,8 +54,6 @@ function panTo(lat, lng) {
     var laLatLng = new google.maps.LatLng(lat, lng);
     gMap.panTo(laLatLng);
 }
-
-
 
 function _connectGoogleApi() {
     if (window.google) return Promise.resolve()

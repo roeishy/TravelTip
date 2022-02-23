@@ -17,13 +17,7 @@ function onInit() {
         .catch(() => console.log('Error: cannot init map'));
 }
 
-// This function provides a Promise API to the callback-based-api of getCurrentPosition
-function getPosition() {
-    console.log('Getting Pos');
-    return new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject)
-    })
-}
+
 
 function onAddMarker() {
     console.log('Adding a marker');
@@ -41,10 +35,10 @@ function onGetLocs() {
 function onGetUserPos() {
     getPosition()
         .then(pos => {
-            console.log('User position is:', pos.coords);
+            // console.log('User position is:', pos.coords);
             document.querySelector('.user-pos').innerText =
                 `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
-            MyLocation()
+            mapService.panTo(pos.coords.latitude, pos.coords.longitude);
         })
         .catch(err => {
             console.log('err!!!', err);
@@ -55,10 +49,10 @@ function onPanTo() {
     mapService.panTo(35.6895, 139.6917);
 }
 
-function MyLocation() {
-    navigator.geolocation.getCurrentPosition(showLocation);
-}
-
-function showLocation(position) {
-    mapService.initMap(position.coords.latitude, position.coords.longitude);
+// This function provides a Promise API to the callback-based-api of getCurrentPosition
+function getPosition() {
+    console.log('Getting Pos');
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject)
+    })
 }
