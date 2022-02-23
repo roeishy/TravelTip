@@ -42,6 +42,7 @@ function onGetUserPos() {
             console.log('User position is:', pos.coords);
             document.querySelector('.user-pos').innerText =
                 `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
+            onMyLocation()
         })
         .catch(err => {
             console.log('err!!!', err);
@@ -50,4 +51,14 @@ function onGetUserPos() {
 function onPanTo() {
     console.log('Panning the Map');
     mapService.panTo(35.6895, 139.6917);
+}
+
+function onMyLocation() {
+    navigator.geolocation.getCurrentPosition(showLocation);
+}
+
+function showLocation(position) {
+    console.log('show loc', position);
+    mapService.initMap(position.coords.latitude, position.coords.longitude);
+    mapService.addMarker(position)
 }
