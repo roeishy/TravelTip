@@ -91,6 +91,7 @@ function onSearch() {
         .then(res => {
             locService.addLoc(address, res)
             mapService.panTo(res.lat, res.lng)
+            renderLocationsTable();
         })
 }
 function onSave() {
