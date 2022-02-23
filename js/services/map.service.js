@@ -5,7 +5,6 @@ export const mapService = {
     initMap,
     addMarker,
     panTo,
-    onSave,
     addressToPos,
     getMarker
     //onSave

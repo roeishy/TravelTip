@@ -93,9 +93,10 @@ function onSearch() {
             locService.addLoc(address, res)
             mapService.panTo(res.lat, res.lng)
         })
-    function onSave() {
-        var marker = mapService.getMarker()
-        var locationPos = document.getElementById('posLocation').value;
-        locService.addLoc(locationPos, marker.position);
-        renderLocationsTable()
-    }
+}
+function onSave() {
+    var marker = mapService.getMarker()
+    var locationPos = document.getElementById('posLocation').value;
+    locService.addLoc(locationPos, marker.position);
+    renderLocationsTable()
+}
