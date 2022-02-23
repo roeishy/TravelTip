@@ -1,5 +1,7 @@
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
+import { utilService } from './services/utilService.js'
+import { storageService } from './services/storage-service.js'
 
 window.onload = onInit;
 window.onAddMarker = onAddMarker;
@@ -42,7 +44,7 @@ function onGetUserPos() {
             console.log('User position is:', pos.coords);
             document.querySelector('.user-pos').innerText =
                 `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
-            onMyLocation()
+            MyLocation()
         })
         .catch(err => {
             console.log('err!!!', err);
@@ -53,12 +55,10 @@ function onPanTo() {
     mapService.panTo(35.6895, 139.6917);
 }
 
-function onMyLocation() {
+function MyLocation() {
     navigator.geolocation.getCurrentPosition(showLocation);
 }
 
 function showLocation(position) {
-    console.log('show loc', position);
     mapService.initMap(position.coords.latitude, position.coords.longitude);
-    mapService.addMarker(position)
 }
