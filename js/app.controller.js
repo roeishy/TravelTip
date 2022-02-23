@@ -8,6 +8,8 @@ window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
+window.onSave = mapService.onSave;
+
 
 function onInit() {
     mapService.initMap()

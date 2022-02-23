@@ -1,13 +1,16 @@
+import { utilService } from "./utilService.js";
+import { storageService } from "./storage-service.js";
+
 export const locService = {
     getLocs,
     addLoc
 }
 
 const STORAGE_KEY = 'savesLocs'
-const locs = [
-    { name: 'Greatplace', lat: 32.047104, lng: 34.832384 },
-    { name: 'Neveragain', lat: 32.047201, lng: 34.832581 }
-]
+var locs = [];
+
+locs = storageService.loadFromStorage(STORAGE_KEY) || [];
+console.log(locs);
 
 function getLocs() {
     return new Promise((resolve, reject) => {
@@ -18,18 +21,18 @@ function getLocs() {
 }
 
 
-function addLoc(name, lat, lng) {
-    console.log('name, lat, lng', name, lat, lng);
-    // var loc = {
-    //     id: utilService.makeId(),
-    //     name: name,
-    //     lat: lat,
-    //     lng: lng,
-    //     createdAt: Date.now(),
-    //     updatedAt: Date.now()
-    // }
-    // locs.push(loc);
-    // storageService.saveToStorage(STORAGE_KEY, locs);
+function addLoc(name, location) {
+    var pos = JSON.parse(JSON.stringify(location.toJSON(), null, 2));
+    var loc = {
+        id: utilService.makeId(),
+        name: name,
+        lat: pos.lat,
+        lng: pos.lng,
+        createdAt: Date.now(),
+        updatedAt: Date.now()
+    }
+    locs.push(loc);
+    storageService.saveToStorage(STORAGE_KEY, locs);
 }
 
 
