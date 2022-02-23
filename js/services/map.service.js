@@ -1,11 +1,18 @@
+// import { locService } from './services/loc.service.js';
+
+
 export const mapService = {
     initMap,
     addMarker,
     panTo
 }
 
+
+
 var gMap;
 var gMarker;
+
+// locService.addLoc(document.getElementById('posLocation').value, gMarker.position.lat, gMarker.position.lng)
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
@@ -30,7 +37,11 @@ function addMarker(loc) {
     if (gMarker) {
         gMarker.setMap(null);
     }
-    const contentString = '<input type="text" placeholder="Enter the locations name" ><button>save</button>';//TODO onclick addLoc name and gMarker
+    const contentString = `
+    <input type="text" placeholder="Enter the locations name" id="posLocation" class="ms-2 form-control"">
+    <button class="ms-2 btn btn-primary" style="width: 100%" onclick="onSave()">save</button>
+    `//TODO onclick addLoc name and gMarker)
+
     const infowindow = new google.maps.InfoWindow({
         content: contentString,
     });
@@ -47,7 +58,15 @@ function addMarker(loc) {
         });
     });
     gMarker = marker;
+    console.log('gMarker.pos', marker.position);
+    console.log('add func', document.getElementById('posLocation').value, gMarker.position.lat, gMarker.position.lng);
     return marker;
+}
+
+function onSave(){
+    var locationPos = document.getElementById('posLocation')
+    console.log('onSave', locationPos,gMarker.position.lat, gMarker.position.lng);
+    addLoc(locationPos,gMarker.position.lat, gMarker.position.lng)
 }
 
 function panTo(lat, lng) {
@@ -68,3 +87,5 @@ function _connectGoogleApi() {
         elGoogleApi.onerror = () => reject('Google script failed to load')
     })
 }
+
+

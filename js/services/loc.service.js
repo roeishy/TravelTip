@@ -19,16 +19,17 @@ function getLocs() {
 
 
 function addLoc(name, lat, lng) {
-    var loc = {
-        id: utilService.makeId(),
-        name: name,
-        lat: lat,
-        lng: lng,
-        createdAt: Date.now(),
-        updatedAt: Date.now()
-    }
-    locs.push(loc);
-    storageService.saveToStorage(STORAGE_KEY, locs);
+    console.log('name, lat, lng', name, lat, lng);
+    // var loc = {
+    //     id: utilService.makeId(),
+    //     name: name,
+    //     lat: lat,
+    //     lng: lng,
+    //     createdAt: Date.now(),
+    //     updatedAt: Date.now()
+    // }
+    // locs.push(loc);
+    // storageService.saveToStorage(STORAGE_KEY, locs);
 }
 
 
